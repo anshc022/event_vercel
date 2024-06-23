@@ -75,12 +75,12 @@ WSGI_APPLICATION = 'college_events.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
-    }
+    'default': dj_database_url.config(default='postgres://default:S4WnXcgjs3lJ@ep-green-surf-a4dga4i2.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require')
 }
+
 
 
 # Password validation
@@ -129,9 +129,9 @@ ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
 # api/settings.py
 WSGI_APPLICATION = 'api.wsgi.app'
 
+
 import os
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
